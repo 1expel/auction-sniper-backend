@@ -14,7 +14,8 @@ export const AccountDeletion = (req: Request, res: Response) => {
   if (req.method === "GET") {
     if (!req.query.challenge_code) {
       console.error("No challenge_code received from eBay");
-      return res.status(400).json({ error: "Missing challenge_code" });
+      res.status(400).json({ error: "Missing challenge_code" });
+      return 
     }
 
     const challengeCode = req.query.challenge_code as string;
@@ -29,16 +30,19 @@ export const AccountDeletion = (req: Request, res: Response) => {
     console.log("Computed challengeResponse:", responseHash);
 
     // ✅ Send response directly
-    return res.status(200).json({ challengeResponse: responseHash });
+    res.status(200).json({ challengeResponse: responseHash });
+    return 
   }
 
   if (req.method === "POST") {
     console.log("Received eBay account deletion POST:", req.body);
     
     // ✅ You can process the deletion notification here
-    return res.status(200).json({ message: "Account deletion received" });
+    res.status(200).json({ message: "Account deletion received" });
+    return 
   }
 
   // If request is not GET or POST, return an error
-  return res.status(405).json({ error: "Method Not Allowed" });
+  res.status(405).json({ error: "Method Not Allowed" });
+  return 
 };
