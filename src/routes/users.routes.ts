@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import type { RequestHandler } from 'express';
 import { AccountDeletion, AccountDeletion2 } from '../controllers/users.controller';
 
 const router = Router();
