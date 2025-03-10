@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import routes from "@/routes";
+import routes from "./routes";
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(cors())
 app.use("/api", routes);
 
 app.get("/", (req, res) => {
-  res.send("Hello from eBay Sniper API!");
+  res.send("Success!");
 });
 
 app.listen(PORT, () => {

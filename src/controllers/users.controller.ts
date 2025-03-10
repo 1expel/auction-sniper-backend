@@ -2,5 +2,5 @@ import { Request, Response } from 'express';
 
 export const AccountDeletion = (req: Request, res: Response) => { 
   console.log("Received eBay account deletion notification:", req.body);
-  res.sendStatus(200);
+  res.status(200).json({ message: "ok" });
 }
