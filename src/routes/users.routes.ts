@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { AccountDeletion } from '../controllers/users.controller';
+import { AccountDeletion, AccountDeletion2 } from '../controllers/users.controller';
 
 const router = Router();
 
 router.post("/ebay-account-deletion", AccountDeletion);
+router.post("/ebay-account-deletion", AccountDeletion2);
 
 export default router;
