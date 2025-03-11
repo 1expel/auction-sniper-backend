@@ -24,7 +24,7 @@ export const AccountDeletion = (req: Request, res: Response) => {
     const hash = createHash("sha256");
     hash.update(challengeCode);
     hash.update(VERIFICATION_TOKEN);  
-    hash.update(req.path);  
+    hash.update("https://auction-sniper-backend-production.up.railway.app/api/users/ebay-account-deletion");  
     const responseHash = hash.digest("hex");  // ✅ Keep it as HEX
 
     console.log("Computed challengeResponse:", responseHash);
