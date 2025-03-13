@@ -17,6 +17,9 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      ebay-oauth-nodejs-client:
+        specifier: ^1.2.2
+        version: 1.2.2
       express:
         specifier: ^4.21.2
         version: 4.21.2
@@ -254,6 +257,9 @@ packages:
 
   dynamic-dedupe@0.3.0:
     resolution: {integrity: sha512-ssuANeD+z97meYOqd50e04Ze5qp4bPqo8cCkI4TRjZkzAUgIDTrXV1R8QCdINpiI+hw14+rYazvTRdQrz0/rFQ==}
+
+  ebay-oauth-nodejs-client@1.2.2:
+    resolution: {integrity: sha512-loTlaN0tgmB4W9jVKUMJC8TjIs4OZ6U/ktjI1ctJQKCZi3qAWkwt26sUtMkWCGaZbJgjZhNMoUi2bEvVGdGc/w==}
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -523,6 +529,11 @@ packages:
   qs@6.13.0:
     resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
     engines: {node: '>=0.6'}
+
+  querystring@0.2.1:
+    resolution: {integrity: sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==}
+    engines: {node: '>=0.4.x'}
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
 
   range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
@@ -920,6 +931,10 @@ snapshots:
     dependencies:
       xtend: 4.0.2
 
+  ebay-oauth-nodejs-client@1.2.2:
+    dependencies:
+      querystring: 0.2.1
+
   ee-first@1.1.1: {}
 
   encodeurl@1.0.2: {}
@@ -1184,6 +1199,8 @@ snapshots:
   qs@6.13.0:
     dependencies:
       side-channel: 1.1.0
+
+  querystring@0.2.1: {}
 
   range-parser@1.2.1: {}
 
