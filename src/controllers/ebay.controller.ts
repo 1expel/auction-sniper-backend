@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ebay } from "../ebay";
+import { ebayService } from '../services/ebay.service';
 
 // https://api.ebay.com/buy/browse/v1/item_summary/search?q=laptops&limit=3
 
@@ -8,10 +8,14 @@ import { ebay } from "../ebay";
 
 export const getListings = async (req: Request, res: Response) => {
   try {
-    const res = await ebay.get("/item_summary/search");
-    console.log(res.data);
+    const query = req.query.q;
+    if (!query) { res.status(400).json({ error: 'Search query required' }); return; }
+    const results = await ebayService.searchListings(query);
+    res.json(results);
+    return;
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Failed to fetch listings' });
+    return;
   }
-}
+};
