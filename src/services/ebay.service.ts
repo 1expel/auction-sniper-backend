@@ -4,11 +4,8 @@ import { EBAY_CONFIG } from '../config/ebay.config';
 import { SearchListingsParams, EbaySearchResponse } from '../types/ebay.types';
 
 //! add later
-// Removes all the complexity around:
-// Token caching
-// Token refresh
-// Expiry tracking
-// Axios instance management
+// client credentials grant flow: DONE
+// user authoirzation grant flow: 
 
 class EbayService {
 
@@ -23,12 +20,14 @@ class EbayService {
 
   // if not initialized yet or token expired -> recreate axios api client.
   private async getApiClient() {
+    console.log('\ngetting api client... ')
     if (!this.accessToken || !this.tokenExpiry || Date.now() >= this.tokenExpiry) {
+      console.log(!this.accessToken ? '-> initializing apiClient' : '-> token expired at:' + new Date(this.tokenExpiry).toLocaleString())
       try {
-        const res = await this.authClient.getApplicationToken('PRODUCTION', 'https://api.ebay.com/oauth/api_scope');
+        const res = await this.authClient.getApplicationToken('PRODUCTION', 'https://api.ebay.com/oauth/api_scope'); 
         const { access_token, expires_in } = JSON.parse(res);
         this.accessToken = access_token;
-        this.tokenExpiry = Date.now() + (expires_in - 300) * 100 // set expiry to 5 minutes before actual expiry to be safe.
+        this.tokenExpiry = Date.now() + (expires_in - 300) * 1000 // set expiry to 5 minutes before actual expiry to be safe.
         this.apiClient = axios.create({ 
           baseURL: EBAY_CONFIG.BASE_URL,
           headers: { 
@@ -36,12 +35,16 @@ class EbayService {
             'Content-Type': 'application/json'
           }
         });
+        console.log('-> new token will expire at:', new Date(this.tokenExpiry).toLocaleString());
+        return this.apiClient;
       } catch (error) {
         console.error('Failed to refresh eBay access token:', error);
         throw new Error('Failed to authenticate with eBay');
       }
+    } else {
+      console.log('-> valid api client');
+      return this.apiClient;
     }
-    return this.apiClient;
   }
 
   // get token. use token to search.
