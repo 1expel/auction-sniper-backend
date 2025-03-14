@@ -8,13 +8,25 @@ import { ebayService } from '../services/ebay.service';
 
 export const getListings = async (req: Request, res: Response) => {
   try {
-    const query = req.query.q;
-    if (!query) { res.status(400).json({ error: 'Search query required' }); return; }
-    const results = await ebayService.searchListings(query);
+    const queryParam = req.query.q;
+    const limit = req.query.limit ? Number(req.query.limit) : 10;
+
+    // Validate and convert query parameter to string
+    if (!queryParam || typeof queryParam !== 'string') { 
+      res.status(400).json({ error: 'Search query required and must be a string' }); 
+      return; 
+    }
+
+    // Search with validated parameters
+    const results = await ebayService.searchListings({
+      query: queryParam,
+      limit
+    });
+
     res.json(results);
     return;
   } catch (error) {
-    console.error(error);
+    console.error('Error in getListings:', error);
     res.status(500).json({ error: 'Failed to fetch listings' });
     return;
   }
