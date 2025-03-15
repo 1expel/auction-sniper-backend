@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { ebayService } from '../services/ebay.service';
-import { ProfessionalGrader, Grade, Specialty } from '../types/ebay.types';
+import { ebayService } from "../services/ebay.service";
+import { ProfessionalGrader, Grade, Specialty } from "../types/ebay.types";
 
 // https://api.ebay.com/buy/browse/v1/item_summary/search?q=laptops&limit=3
 
@@ -9,16 +9,16 @@ import { ProfessionalGrader, Grade, Specialty } from '../types/ebay.types';
 
 export const getListings = async (req: Request, res: Response) => {
   try {
-    const queryParam = req.query.query;
+    const queryParam = req.query.query || "";
     const limit = req.query.limit ? Number(req.query.limit) : 10;
-    
+
     // Parse professional graders if provided
     let professionalGrader: ProfessionalGrader[] | undefined;
     if (req.query.professionalGrader) {
       try {
         professionalGrader = JSON.parse(req.query.professionalGrader as string);
       } catch (e) {
-        res.status(400).json({ error: 'Invalid professional grader format' });
+        res.status(400).json({ error: "Invalid professional grader format" });
         return;
       }
     }
@@ -29,7 +29,7 @@ export const getListings = async (req: Request, res: Response) => {
       try {
         grades = JSON.parse(req.query.grades as string);
       } catch (e) {
-        res.status(400).json({ error: 'Invalid grades format' });
+        res.status(400).json({ error: "Invalid grades format" });
         return;
       }
     }
@@ -40,15 +40,17 @@ export const getListings = async (req: Request, res: Response) => {
       try {
         specialty = JSON.parse(req.query.specialty as string);
       } catch (e) {
-        res.status(400).json({ error: 'Invalid specialty format' });
+        res.status(400).json({ error: "Invalid specialty format" });
         return;
       }
     }
 
     // Validate and convert query parameter to string
-    if (!queryParam || typeof queryParam !== 'string') { 
-      res.status(400).json({ error: 'Search query required and must be a string' }); 
-      return; 
+    if (typeof queryParam !== "string") {
+      res
+        .status(400)
+        .json({ error: "Search query must be a string when provided" });
+      return;
     }
 
     // Search with validated parameters
@@ -57,12 +59,12 @@ export const getListings = async (req: Request, res: Response) => {
       limit,
       professionalGrader,
       grades,
-      specialty
+      specialty,
     });
 
     res.json(results);
   } catch (error) {
-    console.error('Error in getListings:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error in getListings:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -80,10 +80,16 @@ class EbayService {
       
       // Build search parameters
       const searchParams: any = {
-        q: `${params.query} pokemon card`,
         category_ids: categoryId,
         limit: params.limit || 10,
       };
+
+      // Only add query parameter if it's not empty
+      if (params.query.trim()) {
+        searchParams.q = `${params.query} pokemon card`;
+      } else {
+        searchParams.q = 'pokemon card';
+      }
 
       // Build aspect filters
       const filters: AspectFilter[] = [];
