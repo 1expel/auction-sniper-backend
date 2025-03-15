@@ -1,0 +1,19 @@
+localizedAspectName:
+- grade
+- Card Type - pokemon - pokemon tcg
+- card name
+
+
+Yes, this list is exactly what we needed! Based on your previous questions about graded Pokemon cards, here are the key aspects we should focus on:
+Essential Aspects for Graded Pokemon Cards:
+Professional Grader (for PSA, BGS, CGC) - This is the official name instead of "Grading Company" that we were using
+Grade (for numerical grades like 10, 9.5, etc.)
+Card Type (to filter for Pokemon cards)
+Graded (to ensure we only get graded cards)
+
+Additional Useful Aspects:
+Speciality (for card types like VMAX, GX, EX that we saw earlier)
+Finish (for Holo, Reverse Holo, etc.)
+Rarity (Common, Uncommon, Rare, etc.)
+Set (Base Set, Jungle, etc.)
+Let's update our types to use these official eBay aspect names:

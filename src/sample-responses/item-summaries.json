@@ -1,0 +1,898 @@
+{
+  "warnings": [
+      {
+          "errorId": 12002,
+          "domain": "API_BROWSE",
+          "category": "REQUEST",
+          "message": "The conditionIds filter value is invalid. For the valid values, refer to the API call documentation.",
+          "parameters": [
+              {
+                  "name": "fieldName",
+                  "value": "conditionIds"
+              },
+              {
+                  "name": "filterValue",
+                  "value": "{1000|2000|2500|3000|4000|5000}|buyingOptions:{FIXED_PRICE|AUCTION}"
+              }
+          ]
+      }
+  ],
+  "href": "https://api.ebay.com/buy/browse/v1/item_summary/search?q=mewtwo+pokemon+card+graded+PSA+BGS+CGC&limit=10&category_ids=183454&offset=0",
+  "total": 52,
+  "next": "https://api.ebay.com/buy/browse/v1/item_summary/search?q=mewtwo+pokemon+card+graded+PSA+BGS+CGC&limit=10&category_ids=183454&offset=10",
+  "limit": 10,
+  "offset": 0,
+  "itemSummaries": [
+      {
+          "itemId": "v1|305780734628|0",
+          "title": "PSA/CGC/BGS Graded Pokemon Card + Bonus Singles Pack & Sealed Booster!🔥",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/vVQAAOSwVLhm5DLU/s-l225.jpg"
+          },
+          "price": {
+              "value": "19.99",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C305780734628%7C0",
+          "seller": {
+              "username": "yocscardz15",
+              "feedbackPercentage": "99.5",
+              "feedbackScore": 638
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/vVQAAOSwVLhm5DLU/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "FIXED",
+                  "shippingCost": {
+                      "value": "4.88",
+                      "currency": "USD"
+                  }
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE",
+              "BEST_OFFER"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/305780734628?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item4731f3baa4:g:vVQAAOSwVLhm5DLU&amdata=enc%3AAQAKAAABAPeG5RIuIyokJHJy903%2F5UYan4zXpqQVddfOgFDi4AhvFInKmC2UOfknKi5lUlk%2F6RsTw9Gsw6F5oIBdGi%2Fmvm6X51lm8bBHIjRecewd85C4MOtJwhf%2FrcBOalTcpHooFx7xkfyMnObDLr7o9bFYpdUmJMapP36B3VB%2BQq8GDdhYNimLA3jE%2FibgelIcMtKlhzfTMxeQVzAZ1bthhyxW0JILT%2BywPYVzMMbuYAl521P%2BfTOXzZEA6qwlq4cd5zN4Bb3lH--t10loC5n1hkbPIjHy7HGz00z3B9OA1MMX3uRxocfD4jvV3juBgsVfphccaYHKXp3KgOBWXouW1xP0iPs%3D",
+          "itemLocation": {
+              "postalCode": "276**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/tWAAAOSwz91m5DLW/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/Tp4AAOSw56Nm5DLW/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/bAsAAOSwp5tm5DLX/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/GKEAAOSw2bVm5DLY/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/JOYAAOSwYvlm5DLZ/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/t6QAAOSwDPFm5DLa/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/XP0AAOSwTZZm5DLa/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/f~wAAOSw77xm5DLb/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/54kAAOSwtd1m5DLc/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/Q0UAAOSwbI1m5DLd/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/lL4AAOSwEaNm5DLd/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/4aUAAOSwVI5m5DLe/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/F5QAAOSwNFBm5DLg/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/FrsAAOSw--dm5DLg/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "305780734628",
+          "availableCoupons": false,
+          "itemCreationDate": "2024-09-13T12:44:36.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": true,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|387702079621|654935008188",
+          "title": "Graded Pokemon Card Slabs English and Japanese Over 90! PSA/CGC/BGS Choose Yours",
+          "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=387702079621",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/XwUAAOSwgkFnT9nV/s-l225.jpg"
+          },
+          "price": {
+              "value": "35.00",
+              "currency": "USD"
+          },
+          "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C387702079621%7C654935008188",
+          "seller": {
+              "username": "vivid.collectibles",
+              "feedbackPercentage": "97.3",
+              "feedbackScore": 963
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/XwUAAOSwgkFnT9nV/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "FIXED",
+                  "shippingCost": {
+                      "value": "0.00",
+                      "currency": "USD"
+                  }
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/387702079621?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item5a44d84085:g:XwUAAOSwgkFnT9nV&amdata=enc%3AAQAKAAABAPeG5RIuIyokJHJy903%2F5UaMtqU2MoTfHzOmUMpnlX8F3zI5P5YrRrSlqZ%2F5L235zkVXSJ7zVv9Sg0YIvTsLbBkJKugRQRTSguTq%2BvqUcy%2BcDINuGgK3EUy%2FqqJ%2BklXNQ4%2BOUndvKjnPtaNjCnn8NOiil74Fppr3Ic2JDA8agl%2FqnUNNvOXXjfX1XYI8%2BfjCCjSB2iyc2rbTloIn6DQjTZLvmeYIND%2FR3tNVCKwQvZjYJpU2qw2l5s0pDdb%2F8tsOIcDFhHMflOSebWefYKrjnPR2P57hIWSMi6KH3tmqgwwvKO%2BAWscf64mCQZNsPmMMa0la1G9LMTUxYkw2hlBXNWs%3D",
+          "itemLocation": {
+              "postalCode": "945**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/sn4AAOSwNj9nT9ns/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/lW8AAOSwybZnT9n1/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/au8AAOSwkVZnT9n2/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/Ib8AAOSw~kVnT9n7/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/LjgAAOSw1ZFnT9ps/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/ZvwAAOSwS2BnT9sm/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/ETMAAOSwNkJnT9rt/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/JB8AAOSw~kVnT9r6/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "387702079621",
+          "availableCoupons": false,
+          "itemCreationDate": "2024-12-07T03:56:38.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": true,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|186979840135|0",
+          "title": "［ARS10］Pokemon Card Japanese MEWTWO HOLO 1996 Basic Base Set PSA10 BGS CGC",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/2B8AAOSwLgZnuJHE/s-l225.jpg"
+          },
+          "price": {
+              "value": "490.50",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C186979840135%7C0",
+          "seller": {
+              "username": "tyo_vintage_tcg",
+              "feedbackPercentage": "100.0",
+              "feedbackScore": 30
+          },
+          "marketingPrice": {
+              "originalPrice": {
+                  "value": "545.00",
+                  "currency": "USD"
+              },
+              "discountPercentage": "10",
+              "discountAmount": {
+                  "value": "54.50",
+                  "currency": "USD"
+              },
+              "priceTreatment": "MARKDOWN"
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/2B8AAOSwLgZnuJHE/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "FIXED",
+                  "shippingCost": {
+                      "value": "0.00",
+                      "currency": "USD"
+                  }
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE",
+              "BEST_OFFER"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/186979840135?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item2b88ddf087:g:2B8AAOSwLgZnuJHE&amdata=enc%3AAQAKAAABAPeG5RIuIyokJHJy903%2F5UaU4d6OpA3R78tFl%2B4H%2F8Ybjp4zvdLP2%2B8%2BaXrKCqCTBqnPDXikhzuE8jXjTwP%2B%2B8zIFMcOuEmlPi28asXwxweH2kJoYz6qb62DJuX5afs3nTa8VNrTcoc%2BdvunQwMJvHpmGJ1eeAGvzFU7X0CAsGdSpqUBcEz6BJObVKrh0IAKJ6f1sFdFhm5q2x0zcjWFUl0X5iGu294ut8%2Fto5nHWTTVi1HE0JIL9zFZFa9Mpl7xUZh%2FP7WFd%2F%2BapidlGw435wU3%2BPXXXBIjclBeiALZPyQMIaRj3vnBmtK%2Flvl5mon64l8dgpV228nmDzpsQAfiVzE%3D",
+          "itemLocation": {
+              "country": "JP"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/itUAAOSw6mtnuJHE/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/BQ0AAOSw4zBnuJHE/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/oWUAAOSwKqRnuJHF/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/Op4AAOSwYolnuJHF/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/ypUAAOSwKKhnuJHF/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/fWUAAOSwDGhnuJHF/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/W2gAAOSwSOJnuJHH/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/q5sAAOSwuulnuJHE/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/lxMAAOSwtTlnuJHE/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "186979840135",
+          "availableCoupons": false,
+          "itemCreationDate": "2025-02-21T14:50:24.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": true,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|326467372228|0",
+          "title": "CGC 9 Mewtwo 2000 Black Star Promos 14 Mewtwo Strikes Back Pokemon Card psa",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/aOIAAeSwt8Fnw3Tz/s-l225.jpg"
+          },
+          "price": {
+              "value": "49.99",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C326467372228%7C0",
+          "seller": {
+              "username": "millenniumrose",
+              "feedbackPercentage": "100.0",
+              "feedbackScore": 24155
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/aOIAAeSwt8Fnw3Tz/s-l225.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "FIXED",
+                  "shippingCost": {
+                      "value": "0.00",
+                      "currency": "USD"
+                  }
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/326467372228?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item4c02f8c4c4:g:aOIAAeSwt8Fnw3Tz&amdata=enc%3AAQAKAAABAPeG5RIuIyokJHJy903%2F5UYTeSQw8KPUagmbu%2BTXoyP4nF50EGZvwv11wNrMc2RgKF2fKhvLLJCXMlank5zhy3RhfHvAdiNsi1NFjxDBjDxOamd2gxAQM2IIDPCWEb6BCyyyuFMjg3ChI0DAM7C76aomuGgx9ky1ePrFMUOmOIMMOqwucd4T4COpEyRA%2B73H81oU17o0pcIf8aHaZZlN8H02%2Blx1Ti5VqxgLpXQIfhJRWWcyQr%2BDlwYTylpE2nzrFIVzCA%2FtlacLQo4yGpuKVaoP%2FIaAzEwfth%2Bw3Fq%2FVvqlVYKv30BblB%2BC7kfQkpRuVa5Vs6ppIsxXP8EnUjQOoGw%3D",
+          "itemLocation": {
+              "postalCode": "281**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/NcwAAeSwOdBnw3Tz/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "326467372228",
+          "availableCoupons": false,
+          "itemCreationDate": "2025-03-01T21:15:00.000Z",
+          "topRatedBuyingExperience": true,
+          "priorityListing": true,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|255734542204|0",
+          "title": "Mewtwo 14 2000 Black Star  Promo Pokemon Card Graded PSA 10 Gem Mint CGC BGS",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/SzoAAOSwUNhjKKiS/s-l225.jpg"
+          },
+          "price": {
+              "value": "599.98",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C255734542204%7C0",
+          "seller": {
+              "username": "theyeayeacollection",
+              "feedbackPercentage": "100.0",
+              "feedbackScore": 1686
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/SzoAAOSwUNhjKKiS/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "FIXED",
+                  "shippingCost": {
+                      "value": "0.00",
+                      "currency": "USD"
+                  }
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE",
+              "BEST_OFFER"
+          ],
+          "epid": "24043366909",
+          "itemWebUrl": "https://www.ebay.com/itm/255734542204?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item3b8af76f7c:g:SzoAAOSwUNhjKKiS",
+          "itemLocation": {
+              "postalCode": "111**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/DuQAAOSwXwljKKiW/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "255734542204",
+          "availableCoupons": false,
+          "itemCreationDate": "2022-09-19T17:39:05.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": false,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|176881591612|0",
+          "title": "Graded Pokemon Card Slabs English and Japanese! PSA/CGC/BGS",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/tyAAAeSwb5dnwUH~/s-l225.jpg"
+          },
+          "price": {
+              "value": "1099.99",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C176881591612%7C0",
+          "seller": {
+              "username": "theebison55",
+              "feedbackPercentage": "100.0",
+              "feedbackScore": 80
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/tyAAAeSwb5dnwUH~/s-l225.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "CALCULATED"
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/176881591612?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item292ef6e53c:g:tyAAAeSwb5dnwUH~",
+          "itemLocation": {
+              "postalCode": "191**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/5tAAAeSwEJlnwUIQ/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/sOQAAeSwQD1nwUIe/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "176881591612",
+          "availableCoupons": false,
+          "itemCreationDate": "2025-02-28T05:06:48.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": false,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|396247206712|0",
+          "title": "Graded Trading Card Stand, Solid Maple Wood, Pokemon PSA, CGC, BGS, YuGiOh Magic",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/DkoAAOSw6NZnvmrU/s-l225.jpg"
+          },
+          "price": {
+              "value": "5.99",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C396247206712%7C0",
+          "seller": {
+              "username": "rylin-85",
+              "feedbackPercentage": "97.2",
+              "feedbackScore": 34
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/DkoAAOSw6NZnvmrU/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "CALCULATED"
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE",
+              "BEST_OFFER"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/396247206712?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item5c422c8b38:g:DkoAAOSw6NZnvmrU",
+          "itemLocation": {
+              "postalCode": "980**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/JC8AAOSwJtJnvmrv/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/ZycAAOSwvmlnvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/wNkAAOSwU8dnvmrV/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/dQ4AAOSwp45nvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/PEcAAOSwbKpnvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/wkgAAOSwUkxnvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/yYgAAOSwnmBnvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/5OMAAOSwEq1nvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/ejQAAOSw~75nvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/vJAAAOSwSXhnvmrU/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/rR0AAOSwD-pnvmrU/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "396247206712",
+          "availableCoupons": false,
+          "itemCreationDate": "2025-02-26T01:20:19.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": false,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|405620941752|0",
+          "title": "Mewtwo EX (Full Art) 103/108 Evolutions Holo. PSA. BGS. CGC. AGS",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/EFgAAOSwFcVnqAPn/s-l225.jpg"
+          },
+          "price": {
+              "value": "30.00",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C405620941752%7C0",
+          "seller": {
+              "username": "jojim-7077",
+              "feedbackPercentage": "100.0",
+              "feedbackScore": 1198
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/EFgAAOSwFcVnqAPn/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "CALCULATED"
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE",
+              "AUCTION"
+          ],
+          "bidCount": 0,
+          "currentBidPrice": {
+              "value": "20.00",
+              "currency": "USD"
+          },
+          "epid": "8043377605",
+          "itemWebUrl": "https://www.ebay.com/itm/405620941752?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item5e70e463b8:g:EFgAAOSwFcVnqAPn",
+          "itemLocation": {
+              "postalCode": "921**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/8McAAOSwBztnqAPn/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/Gg8AAOSw1u1nqAPn/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/jXoAAOSwWfFnqAPn/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "405620941752",
+          "availableCoupons": false,
+          "itemCreationDate": "2025-03-08T04:00:28.000Z",
+          "itemEndDate": "2025-03-15T03:00:28.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": false,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|306090660567|0",
+          "title": "CGC Pristine 10 Pokemon Umbreon Master Ball Holo #92 Japanese Terastal Festival",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/i~sAAOSw8Y1not9N/s-l225.jpg"
+          },
+          "price": {
+              "value": "449.99",
+              "currency": "USD"
+          },
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C306090660567%7C0",
+          "seller": {
+              "username": "pkgu_trading_cards",
+              "feedbackPercentage": "99.8",
+              "feedbackScore": 3082
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/i~sAAOSw8Y1not9N/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "CALCULATED"
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/306090660567?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item47446cd2d7:g:i~sAAOSw8Y1not9N&amdata=enc%3AAQAKAAABAPeG5RIuIyokJHJy903%2F5Ub42A1GSBBOvhRinj4nTKhegh7E5RRbZYmbVg1qHl669Uhki0Qvlzbm8WQs4jQ30xeCra4wsfDzYRwS0kdUHWnDvNuVfal2TMRXrR8lF4gD9%2FGz2xRnpYWX50tPgvlwwN46cpvfhlVza4ybC03NIutQbx6VZQfdVwaW3SeOHgExb0dODm7BvjHi7tbcySaT3k8pDMu%2BusSzaFG7cEChIpiVd%2F82Lk8f1u32Bxy1Gc2VOwb%2B1AN12RmerXSH41ZCYK6n7cVBBvGpvD1P%2BcE5FGPHi7eJTgbpJ6NFWjr%2BLwWEFaYWp%2Bp65AIRcr8S3H2uZ7M%3D",
+          "itemLocation": {
+              "postalCode": "531**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/taEAAOSwu9Jnot9N/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "306090660567",
+          "availableCoupons": false,
+          "itemCreationDate": "2025-02-05T03:47:59.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": true,
+          "listingMarketplaceId": "EBAY_US"
+      },
+      {
+          "itemId": "v1|155054470887|456370764455",
+          "title": "Charizard + Pikachu & more pokemon cards, Graded PSA 10, CGC BGS Ultra rare vmax",
+          "itemGroupHref": "https://api.ebay.com/buy/browse/v1/item/get_items_by_item_group?item_group_id=155054470887",
+          "leafCategoryIds": [
+              "183454"
+          ],
+          "categories": [
+              {
+                  "categoryId": "183454",
+                  "categoryName": "CCG Individual Cards"
+              },
+              {
+                  "categoryId": "220",
+                  "categoryName": "Toys & Hobbies"
+              },
+              {
+                  "categoryId": "2536",
+                  "categoryName": "Collectible Card Games"
+              }
+          ],
+          "image": {
+              "imageUrl": "https://i.ebayimg.com/images/g/N10AAOSwNlxjfu7R/s-l225.jpg"
+          },
+          "price": {
+              "value": "40.00",
+              "currency": "USD"
+          },
+          "itemGroupType": "SELLER_DEFINED_VARIATIONS",
+          "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C155054470887%7C456370764455",
+          "seller": {
+              "username": "adspacks",
+              "feedbackPercentage": "96.8",
+              "feedbackScore": 840
+          },
+          "condition": "Graded",
+          "conditionId": "2750",
+          "thumbnailImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/N10AAOSwNlxjfu7R/s-l1600.jpg"
+              }
+          ],
+          "shippingOptions": [
+              {
+                  "shippingCostType": "FIXED",
+                  "shippingCost": {
+                      "value": "0.00",
+                      "currency": "USD"
+                  }
+              }
+          ],
+          "buyingOptions": [
+              "FIXED_PRICE"
+          ],
+          "itemWebUrl": "https://www.ebay.com/itm/155054470887?_skw=mewtwo+pokemon+card+graded+PSA+BGS+CGC&hash=item2419f776e7:g:N10AAOSwNlxjfu7R&amdata=enc%3AAQAKAAABAPeG5RIuIyokJHJy903%2F5UYmbUKyfCPDP5i%2FPUh8%2BWMEt%2BKngoHKxK8iFl%2B4PxUSnmb9Phq0Dn8Tk3uA0coPWD8bvri%2BJvOhF%2FmDCYdrvcYefUk1a%2FwMBDv5O58A%2FKmbOhPCDQ08Bp6AFi033ByAMZzxIlUQFjLIqUOngIheghVEl9z7qw3A7IPaVDuox4BeP1Pi3%2FZIlXASiSEw2xaiO8AOFrkmGPiSapS3esKJk6kq7kVxOJbcVtuiOzuAja3knxrpp4lRhNdtsey9dsuj94%2BrYEbUH7CHjLRbrdESkc1Bs3238kQILrQ0eeen3xNjIaigXgAWOEGNtrJCbVu6%2BX8%3D",
+          "itemLocation": {
+              "postalCode": "350**",
+              "country": "US"
+          },
+          "additionalImages": [
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/8dYAAOSwulNjfu7T/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/tqMAAOSweTtjfu7Q/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/t2UAAOSwn2Riu3cM/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/wvkAAOSwX9Niyh4g/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/PDIAAOSwO~ZizaYu/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/TuwAAOSwGTRiuhCd/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/pdYAAOSwvN1iuhCq/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/Ld8AAOSwo8diuhCx/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/cGwAAOSwL5ZiuhCz/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/tNAAAOSwmn5iuhC6/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/D0AAAOSwJZJiuhC9/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/31IAAOSwYali5L8-/s-l225.jpg"
+              },
+              {
+                  "imageUrl": "https://i.ebayimg.com/images/g/izUAAOSw5oli5L9H/s-l225.jpg"
+              }
+          ],
+          "adultOnly": false,
+          "legacyItemId": "155054470887",
+          "availableCoupons": false,
+          "itemCreationDate": "2022-06-27T20:19:58.000Z",
+          "topRatedBuyingExperience": false,
+          "priorityListing": true,
+          "listingMarketplaceId": "EBAY_US"
+      }
+  ]
+}

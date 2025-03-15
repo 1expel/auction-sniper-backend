@@ -1,0 +1,37 @@
+{
+  "category": "Pokemon Card Singles",
+  "categoryId": "183454",
+  "aspects": [
+    {
+      "name": "Speciality",
+      "type": "STRING",
+      "required": false,
+      "cardinality": "SINGLE",
+      "values": [
+        "BREAK",
+        "EX",
+        "GX",
+        "LEGEND",
+        "Level Up",
+        "MEGA",
+        "PRIME",
+        "Restored",
+        "SP",
+        "TAG TEAM",
+        "V",
+        "VMAX"
+      ]
+    },
+    {
+      "name": "Stage",
+      "type": "STRING",
+      "required": false,
+      "cardinality": "SINGLE",
+      "values": [
+        "Basic",
+        "Stage 1",
+        "Stage 2"
+      ]
+    }
+  ]
+}

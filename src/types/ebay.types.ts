@@ -62,6 +62,42 @@ export interface EbaySearchResponse {
 export interface SearchListingsParams {
   query: string;
   limit?: number;
-  filter?: string;
-  sort?: string;
+  professionalGrader?: ProfessionalGrader[];
+  grades?: Grade[];
+  specialty?: Specialty[];
+}
+
+export const POKEMON_CARD_ASPECTS = {
+  PROFESSIONAL_GRADER: {
+    name: "Professional Grader",
+    values: ["PSA", "BGS", "CGC", "ACE", "SGC"] as const
+  },
+  GRADE: {
+    name: "Grade",
+    values: ["10", "9.5", "9", "8.5", "8", "7"] as const
+  },
+  CARD_TYPE: {
+    name: "Card Type",
+    values: ["Pokémon"] as const
+  },
+  GRADED: {
+    name: "Graded",
+    values: ["Yes"] as const
+  },
+  SPECIALTY: {
+    name: "Speciality", // Note eBay's spelling
+    values: ["VMAX", "V", "GX", "EX", "BREAK", "LEGEND", "MEGA", "PRIME", "TAG TEAM"] as const
+  }
+} as const;
+
+// Type for the aspect filter values
+export type ProfessionalGrader = typeof POKEMON_CARD_ASPECTS.PROFESSIONAL_GRADER.values[number];
+export type Grade = typeof POKEMON_CARD_ASPECTS.GRADE.values[number];
+export type Specialty = typeof POKEMON_CARD_ASPECTS.SPECIALTY.values[number];
+
+// Specific Pokemon card search params
+export interface PokemonCardSearchParams extends SearchListingsParams {
+  professionalGrader?: ProfessionalGrader[];
+  grades?: Grade[];
+  specialty?: Specialty[];
 } 
