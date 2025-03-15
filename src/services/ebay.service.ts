@@ -82,6 +82,7 @@ class EbayService {
       const searchParams: any = {
         category_ids: categoryId,
         limit: params.limit || 10,
+        offset: params.offset || 0,
       };
 
       // Only add query parameter if it's not empty

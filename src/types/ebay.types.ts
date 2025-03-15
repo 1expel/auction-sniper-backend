@@ -62,6 +62,7 @@ export interface EbaySearchResponse {
 export interface SearchListingsParams {
   query: string;
   limit?: number;
+  offset?: number;
   professionalGrader?: ProfessionalGrader[];
   grades?: Grade[];
   specialty?: Specialty[];

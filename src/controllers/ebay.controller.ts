@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ebayService } from "../services/ebay.service";
-import { ProfessionalGrader, Grade, Specialty } from "../types/ebay.types";
+import { ProfessionalGrader, Grade, Specialty, SearchListingsParams } from "../types/ebay.types";
 
 // https://api.ebay.com/buy/browse/v1/item_summary/search?q=laptops&limit=3
 
@@ -11,6 +11,7 @@ export const getListings = async (req: Request, res: Response) => {
   try {
     const queryParam = req.query.query || "";
     const limit = req.query.limit ? Number(req.query.limit) : 10;
+    const offset = req.query.offset ? Number(req.query.offset) : 0;
 
     // Parse professional graders if provided
     let professionalGrader: ProfessionalGrader[] | undefined;
@@ -54,13 +55,16 @@ export const getListings = async (req: Request, res: Response) => {
     }
 
     // Search with validated parameters
-    const results = await ebayService.searchListings({
+    const searchParams: SearchListingsParams = {
       query: queryParam,
       limit,
+      offset,
       professionalGrader,
       grades,
       specialty,
-    });
+    };
+
+    const results = await ebayService.searchListings(searchParams);
 
     res.json(results);
   } catch (error) {
