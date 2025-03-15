@@ -58,14 +58,32 @@ export interface EbaySearchResponse {
   prev?: string;  // URL for previous page
 }
 
-// Search parameters
+// Aspect filter structure
+export interface AspectFilter {
+  aspectName: string;
+  aspectValues: readonly string[];
+}
+
+export interface AspectFilters {
+  professionalGrader?: ProfessionalGrader[];
+  grades?: Grade[];
+  specialty?: Specialty[];
+}
+
+// Standard filters structure
+export interface StandardFilters {
+  buyingOptions?: string[];
+  priceMin?: number;
+  priceMax?: number;
+}
+
+// Search parameters with organized aspect filters
 export interface SearchListingsParams {
   query: string;
   limit?: number;
   offset?: number;
-  professionalGrader?: ProfessionalGrader[];
-  grades?: Grade[];
-  specialty?: Specialty[];
+  aspectFilters?: AspectFilters;
+  filters?: StandardFilters;
 }
 
 export const POKEMON_CARD_ASPECTS = {

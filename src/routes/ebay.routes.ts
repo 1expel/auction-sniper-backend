@@ -3,7 +3,7 @@ import { getListings } from "../controllers/ebay.controller";
 
 const router = Router();
 
-// GET /api/ebay/listings?q=search+term&limit=10
-router.get("/listings", getListings);
+// Only use POST for the listings endpoint
+router.post("/listings", getListings);
 
 export default router;

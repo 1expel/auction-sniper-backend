@@ -4,14 +4,16 @@ import { EBAY_CONFIG } from '../config/ebay.config';
 import { 
   SearchListingsParams, 
   EbaySearchResponse, 
-  POKEMON_CARD_ASPECTS
+  POKEMON_CARD_ASPECTS,
+  AspectFilter,
+  AspectFilters
 } from '../types/ebay.types';
 
 // Interface for aspect filter
-interface AspectFilter {
-  aspectName: string;
-  aspectValues: readonly string[];
-}
+// interface AspectFilter {
+//   aspectName: string;
+//   aspectValues: readonly string[];
+// }
 
 //! add later
 // client credentials grant flow: DONE
@@ -107,34 +109,57 @@ class EbayService {
         }
       );
 
-      // Add professional grader filter if specified
-      if (params.professionalGrader?.length) {
-        filters.push({
-          aspectName: POKEMON_CARD_ASPECTS.PROFESSIONAL_GRADER.name,
-          aspectValues: params.professionalGrader
-        });
-      }
+      // Add aspect filters if provided
+      if (params.aspectFilters) {
+        const { professionalGrader, grades, specialty } = params.aspectFilters;
 
-      // Add grades filter if specified
-      if (params.grades?.length) {
-        filters.push({
-          aspectName: POKEMON_CARD_ASPECTS.GRADE.name,
-          aspectValues: params.grades
-        });
-      }
+        if (professionalGrader?.length) {
+          filters.push({
+            aspectName: POKEMON_CARD_ASPECTS.PROFESSIONAL_GRADER.name,
+            aspectValues: professionalGrader
+          });
+        }
 
-      // Add specialty filter if specified
-      if (params.specialty?.length) {
-        filters.push({
-          aspectName: POKEMON_CARD_ASPECTS.SPECIALTY.name,
-          aspectValues: params.specialty
-        });
+        if (grades?.length) {
+          filters.push({
+            aspectName: POKEMON_CARD_ASPECTS.GRADE.name,
+            aspectValues: grades
+          });
+        }
+
+        if (specialty?.length) {
+          filters.push({
+            aspectName: POKEMON_CARD_ASPECTS.SPECIALTY.name,
+            aspectValues: specialty
+          });
+        }
       }
 
       // Add aspect filters to search params if we have any
       if (filters.length > 0) {
-        // Format aspect filter as a string instead of JSON
         searchParams.aspect_filter = this.formatAspectFilter(filters, categoryId);
+      }
+
+      // Add standard filters if provided
+      if (params.filters) {
+        const filterParts: string[] = [];
+        
+        // Add buying options filter
+        if (params.filters.buyingOptions?.length) {
+          filterParts.push(`buyingOptions:{${params.filters.buyingOptions.join('|')}}`);
+        }
+        
+        // Add price range filter
+        if (params.filters.priceMin !== undefined || params.filters.priceMax !== undefined) {
+          const min = params.filters.priceMin !== undefined ? params.filters.priceMin : '';
+          const max = params.filters.priceMax !== undefined ? params.filters.priceMax : '';
+          filterParts.push(`price:[${min}..${max}]`);
+        }
+        
+        // Add filter parameter if we have any filters
+        if (filterParts.length > 0) {
+          searchParams.filter = filterParts.join(',');
+        }
       }
 
       console.log('Search params:', searchParams);
