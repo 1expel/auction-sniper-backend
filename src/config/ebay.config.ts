@@ -9,5 +9,6 @@ export const EBAY_CONFIG = {
   BASE_URL: process.env.EBAY_PROD_BASE_URL || 'https://api.ebay.com',
   CLIENT_ID: process.env.EBAY_PROD_APP_ID,
   CLIENT_SECRET: process.env.EBAY_PROD_CERT_ID,
+  REDIRECT_URI: process.env.EBAY_REDIRECT_URI || 'http://localhost:3000/api/ebay/auth/callback',
   SCOPES: ['https://api.ebay.com/oauth/api_scope'] // Only public data scope for now
 } as const; 

@@ -23,11 +23,18 @@ class EbayService {
 
   private authClient;
   private apiClient;
+  private userApiClient;
   private accessToken;
   private tokenExpiry;
+  private userAccessToken;
+  private userTokenExpiry;
 
   constructor() {
-    this.authClient = new EbayAuthToken({ clientId: EBAY_CONFIG.CLIENT_ID, clientSecret: EBAY_CONFIG.CLIENT_SECRET });
+    this.authClient = new EbayAuthToken({ 
+      clientId: EBAY_CONFIG.CLIENT_ID, 
+      clientSecret: EBAY_CONFIG.CLIENT_SECRET,
+      redirectUri: EBAY_CONFIG.REDIRECT_URI
+    });
   }
 
   // if not initialized yet or token expired -> recreate axios api client.
@@ -56,6 +63,73 @@ class EbayService {
     } else {
       console.log('-> valid api client');
       return this.apiClient;
+    }
+  }
+
+  // New method for user authorization flow
+  private async getUserApiClient(refreshToken: string) {
+    if (!this.userAccessToken || !this.userTokenExpiry || Date.now() >= this.userTokenExpiry) {
+      try {
+        console.log('Getting user access token using refresh token...');
+        const res = await this.authClient.getAccessToken('PRODUCTION', refreshToken);
+        const { access_token, expires_in } = JSON.parse(res);
+        
+        this.userAccessToken = access_token;
+        this.userTokenExpiry = Date.now() + (expires_in - 300) * 1000; // 5 minutes buffer
+        
+        this.userApiClient = axios.create({
+          baseURL: EBAY_CONFIG.BASE_URL,
+          headers: {
+            'Authorization': `Bearer ${access_token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        console.log('User token will expire at:', new Date(this.userTokenExpiry).toLocaleString());
+        return this.userApiClient;
+      } catch (error) {
+        console.error('Failed to refresh user access token:', error);
+        throw new Error('User authorization expired');
+      }
+    } else {
+      console.log('Using existing user API client');
+      return this.userApiClient;
+    }
+  }
+
+  // Method to generate authorization URL for user consent
+  public getAuthorizationUrl(state?: string) {
+    const scopes = [
+      'https://api.ebay.com/oauth/api_scope',
+      'https://api.ebay.com/oauth/api_scope/buy.item.feed',
+      'https://api.ebay.com/oauth/api_scope/buy.marketing',
+      'https://api.ebay.com/oauth/api_scope/buy.product.feed',
+      'https://api.ebay.com/oauth/api_scope/buy.item.bulk',
+      'https://api.ebay.com/oauth/api_scope/buy.item'
+    ].join(' ');
+    
+    return this.authClient.generateUserAuthorizationUrl(
+      'PRODUCTION',
+      scopes,
+      state
+    );
+  }
+
+  // Method to exchange authorization code for tokens
+  public async handleAuthCallback(code: string): Promise<{ refresh_token: string }> {
+    try {
+      const tokenResponse = await this.authClient.exchangeCodeForAccessToken(
+        'PRODUCTION',
+        code
+      );
+      
+      const tokenData = JSON.parse(tokenResponse);
+      return {
+        refresh_token: tokenData.refresh_token
+      };
+    } catch (error) {
+      console.error('Error exchanging code for tokens:', error);
+      throw new Error('Failed to complete eBay authorization');
     }
   }
 
@@ -171,6 +245,21 @@ class EbayService {
       return searchResponse.data;
     } catch (error) {
       console.error('eBay API error:', error);
+      throw error;
+    }
+  }
+
+  // Example of a user-specific method (requires user authorization)
+  public async getUserPurchaseHistory(refreshToken: string) {
+    try {
+      const client = await this.getUserApiClient(refreshToken);
+      
+      // This is just an example - adjust the endpoint based on eBay API documentation
+      const response = await client.get('/buy/marketplace-insights/v1/user/purchase-history');
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching user purchase history:', error);
       throw error;
     }
   }
