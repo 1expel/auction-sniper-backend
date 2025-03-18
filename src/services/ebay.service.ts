@@ -99,19 +99,18 @@ class EbayService {
 
   // Method to generate authorization URL for user consent
   public getAuthorizationUrl(state?: string) {
+    // Use minimal scopes that are more likely to be available to all developer accounts
     const scopes = [
-      'https://api.ebay.com/oauth/api_scope',
-      'https://api.ebay.com/oauth/api_scope/buy.item.feed',
-      'https://api.ebay.com/oauth/api_scope/buy.marketing',
-      'https://api.ebay.com/oauth/api_scope/buy.product.feed',
-      'https://api.ebay.com/oauth/api_scope/buy.item.bulk',
-      'https://api.ebay.com/oauth/api_scope/buy.item'
+      'https://api.ebay.com/oauth/api_scope', // Basic scope
     ].join(' ');
+    
+    // Pass optional parameters as an object
+    const options = state ? { state } : undefined;
     
     return this.authClient.generateUserAuthorizationUrl(
       'PRODUCTION',
       scopes,
-      state
+      options
     );
   }
 
