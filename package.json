@@ -16,12 +16,13 @@
   "packageManager": "pnpm@10.5.2",
   "dependencies": {
     "@prisma/client": "^6.5.0",
-    "@privy-io/server-auth": "^1.18.12",
+    "@privy-io/server-auth": "^1.19.0",
     "axios": "^1.8.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "ebay-oauth-nodejs-client": "^1.2.2",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "viem": "^2.23.13"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
