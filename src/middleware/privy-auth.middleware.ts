@@ -45,12 +45,27 @@ export const verifyPrivyToken = async (req: Request, res: Response, next: NextFu
       // Verify the token using Privy SDK
       const verifiedClaims = await privy.verifyAuthToken(token);
       
-      // Add the user to the request object
-      req.user = {
-        privyUserId: verifiedClaims.userId,
-        // Add any additional claims that might be useful
-        // These are optional and depend on what data Privy provides
-      };
+      // Log the claims to help with debugging
+      console.log('Privy verified claims:', JSON.stringify(verifiedClaims, null, 2));
+      
+      // Try to get user data from Privy
+      try {
+        const userData = await privy.getUser(verifiedClaims.userId);
+        console.log('Privy user data:', JSON.stringify(userData, null, 2));
+        
+        // Add the user to the request object with more details
+        req.user = {
+          privyUserId: verifiedClaims.userId,
+          email: userData.email?.address,
+          walletAddress: userData.wallet?.address,
+        };
+      } catch (userDataError) {
+        console.error('Could not fetch user data from Privy:', userDataError);
+        // Still set the user ID even if we couldn't get other data
+        req.user = {
+          privyUserId: verifiedClaims.userId
+        };
+      }
     } catch (tokenError) {
       // If token verification fails, just continue without authentication
       console.error('Token verification failed:', tokenError);
