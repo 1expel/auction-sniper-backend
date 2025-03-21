@@ -380,3 +380,35 @@ Initiate the authorization flow
 Display the user's eBay connection status
 Show user-specific data from eBay
 This implementation follows the dual authentication strategy we discussed, keeping the existing client credentials flow for public data while adding support for user-specific actions through the authorization code grant flow.
+
+# NEXT NEXT NEXT NEXT DOCS.
+
+Recommendation For Your App
+For your eBay integration, I recommend:
+1. Frontend Redirect + Backend Token Exchange
+)
+This gives you the best of both worlds:
+Smooth user experience (stays in your SPA)
+Secure token handling (backend stores refresh token)
+Clean separation of concerns
+2. Implementation Approach:
+Set redirect URI to your frontend:
+'
+Create a callback page that:
+Extracts code from URL
+Sends code to your backend
+Shows loading state while processing
+Handles success/failure appropriately
+Backend endpoint that:
+Receives code from frontend
+Exchanges it for tokens
+Stores refresh token securely (associated with user)
+Returns success response (without exposing tokens)
+For production security, consider:
+Using HTTPS everywhere
+Implementing CSRF protection
+Validating the state parameter
+Using short-lived session tokens
+Summary
+The frontend redirect approach (eBay → Frontend → Backend) is increasingly considered best practice for modern SPAs when implemented properly, as it provides a better user experience while still maintaining security.
+The most important part is ensuring that sensitive tokens (especially refresh tokens) are stored securely on your backend and not exposed to the frontend or stored in localStorage for production use.

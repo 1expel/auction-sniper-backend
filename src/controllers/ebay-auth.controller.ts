@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ebayService } from '../services/ebay.service';
+import { userService } from '../services/user.service';
 
 /**
  * Generate an eBay authorization URL
@@ -53,13 +54,26 @@ export const handleCallback = async (req: Request, res: Response): Promise<void>
     // Exchange the code for tokens
     const { refresh_token } = await ebayService.handleAuthCallback(code);
     
-    // For now, just return the refresh token
-    // In a real application, you would store this in your database
-    res.json({ 
-      success: true, 
-      message: 'Successfully authorized with eBay',
-      refresh_token // Note: In production, don't send this to the client
-    });
+    // If user is authenticated, store their eBay refresh token
+    if (req.user && req.user.privyUserId) {
+      await userService.storeEbayToken(req.user.privyUserId, refresh_token);
+      
+      // Return success without exposing the token
+      res.json({ 
+        success: true, 
+        message: 'Successfully authorized with eBay',
+        connected: true
+      });
+    } else {
+      // If no user in context, return the token for frontend storage
+      // This is only for development/testing
+      res.json({ 
+        success: true, 
+        message: 'Successfully authorized with eBay',
+        refresh_token, // In production, don't send this to the client
+        connected: true
+      });
+    }
   } catch (error) {
     console.error('Error handling callback:', error);
     res.status(500).json({ error: 'Failed to complete authorization' });
@@ -71,14 +85,30 @@ export const handleCallback = async (req: Request, res: Response): Promise<void>
  */
 export const getUserHistory = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { refresh_token } = req.body;
+    let refreshToken: string | null = null;
     
-    if (!refresh_token) {
-      res.status(400).json({ error: 'Refresh token is required' });
+    // First, try to get the token from the database if user is authenticated
+    if (req.user && req.user.privyUserId) {
+      refreshToken = await userService.getEbayToken(req.user.privyUserId);
+    }
+    
+    // If not available, try to get from request body (for development/testing)
+    if (!refreshToken) {
+      const { refresh_token } = req.body;
+      if (!refresh_token) {
+        res.status(400).json({ error: 'eBay connection not found' });
+        return;
+      }
+      refreshToken = refresh_token;
+    }
+    
+    // Ensure we have a token before calling the service
+    if (!refreshToken) {
+      res.status(400).json({ error: 'eBay connection not found' });
       return;
     }
     
-    const history = await ebayService.getUserPurchaseHistory(refresh_token);
+    const history = await ebayService.getUserPurchaseHistory(refreshToken);
     res.json(history);
   } catch (error) {
     console.error('Error fetching user history:', error);

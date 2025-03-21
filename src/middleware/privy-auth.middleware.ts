@@ -10,6 +10,8 @@ declare global {
     interface Request {
       user?: {
         privyUserId: string;
+        email?: string;
+        walletAddress?: string;
         [key: string]: any;
       };
     }
@@ -22,39 +24,55 @@ const privy = new PrivyClient(
   process.env.PRIVY_APP_SECRET || ''
 );
 
-// Middleware to verify Privy JWT tokens
+/**
+ * Middleware that attempts to verify Privy JWT tokens but allows requests without auth
+ * This makes authentication optional for endpoints
+ */
 export const verifyPrivyToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // Get the authorization header
     const authHeader = req.headers.authorization;
     
+    // If no auth header, continue without authentication
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Authorization header missing or invalid' });
+      return next();
     }
     
     // Extract the token
     const token = authHeader.split(' ')[1];
     
-    // Verify the token using Privy SDK
-    const verifiedClaims = await privy.verifyAuthToken(token);
+    try {
+      // Verify the token using Privy SDK
+      const verifiedClaims = await privy.verifyAuthToken(token);
+      
+      // Add the user to the request object
+      req.user = {
+        privyUserId: verifiedClaims.userId,
+        // Add any additional claims that might be useful
+        // These are optional and depend on what data Privy provides
+      };
+    } catch (tokenError) {
+      // If token verification fails, just continue without authentication
+      console.error('Token verification failed:', tokenError);
+    }
     
-    // Add the user to the request object
-    req.user = {
-      privyUserId: verifiedClaims.userId
-    };
-    
-    // Continue to the next middleware or route handler
+    // Continue to the next middleware
     next();
   } catch (error) {
     console.error('Auth middleware error:', error);
-    return res.status(401).json({ error: 'Invalid or expired token' });
+    // Continue without authentication on error
+    next();
   }
 };
 
-// Middleware to require authentication
-export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+/**
+ * Middleware to require authentication
+ * Use this on routes that should be protected
+ */
+export const requireAuth = (req: Request, res: Response, next: NextFunction): void => {
   if (!req.user) {
-    return res.status(401).json({ error: 'Authentication required' });
+    res.status(401).json({ error: 'Authentication required' });
+    return;
   }
   next();
 };
