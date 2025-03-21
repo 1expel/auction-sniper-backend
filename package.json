@@ -17,7 +17,6 @@
   "dependencies": {
     "@prisma/client": "^6.5.0",
     "@privy-io/server-auth": "^1.18.12",
-    "@supabase/supabase-js": "^2.43.2",
     "axios": "^1.8.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
