@@ -46,12 +46,12 @@ export const verifyPrivyToken = async (req: Request, res: Response, next: NextFu
       const verifiedClaims = await privy.verifyAuthToken(token);
       
       // Log the claims to help with debugging
-      console.log('Privy verified claims:', JSON.stringify(verifiedClaims, null, 2));
+      console.log('privy-auth.middleware.ts -> verified claims:', verifiedClaims.userId);
       
       // Try to get user data from Privy
       try {
         const userData = await privy.getUser(verifiedClaims.userId);
-        console.log('Privy user data:', JSON.stringify(userData, null, 2));
+        // console.log('Privy user data:', JSON.stringify(userData, null, 2));
         
         // Add the user to the request object with more details
         req.user = {

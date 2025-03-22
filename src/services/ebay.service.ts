@@ -39,9 +39,8 @@ class EbayService {
 
   // if not initialized yet or token expired -> recreate axios api client.
   private async getApiClient() {
-    console.log('\ngetting api client... ')
     if (!this.accessToken || !this.tokenExpiry || Date.now() >= this.tokenExpiry) {
-      console.log(!this.accessToken ? '-> initializing apiClient' : '-> token expired at:' + new Date(this.tokenExpiry).toLocaleString())
+      if (this.accessToken) console.log('ebay.service -> token expired at:' + new Date(this.tokenExpiry).toLocaleString())
       try {
         const res = await this.authClient.getApplicationToken('PRODUCTION', 'https://api.ebay.com/oauth/api_scope'); 
         const { access_token, expires_in } = JSON.parse(res);
@@ -54,14 +53,14 @@ class EbayService {
             'Content-Type': 'application/json'
           }
         });
-        console.log('-> new token will expire at:', new Date(this.tokenExpiry).toLocaleString());
+        console.log('ebay.service -> new token will expire at:', new Date(this.tokenExpiry).toLocaleString());
         return this.apiClient;
       } catch (error) {
         console.error('Failed to refresh eBay access token:', error);
         throw new Error('Failed to authenticate with eBay');
       }
     } else {
-      console.log('-> valid api client');
+      console.log('ebay.service -> valid api client');
       return this.apiClient;
     }
   }
@@ -235,7 +234,8 @@ class EbayService {
         }
       }
 
-      console.log('Search params:', searchParams);
+      // Log search params on a single line
+      console.log('ebay.service.ts -> Search:', JSON.stringify(searchParams).replace(/,/g, ', '));
 
       const searchResponse = await client.get(`/buy/browse/v1/item_summary/search`, { 
         params: searchParams 

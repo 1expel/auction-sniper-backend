@@ -5,21 +5,14 @@ class UserService {
    * Create a user if they don't exist already
    */
   async createUserIfNotExists(privyId: string, email?: string, walletAddress?: string) {
-    console.log(`Attempting to create user with privy_id: ${privyId}`, {
-      hasEmail: !!email,
-      hasWalletAddress: !!walletAddress
-    });
-    
     try {
       // Check if user exists
-      console.log('Checking if user exists...');
       const existingUser = await prisma.profiles.findUnique({
         where: { privy_id: privyId }
       });
 
       // If user doesn't exist, create them
       if (!existingUser) {
-        console.log('User not found, creating new user...');
         const newUser = await prisma.profiles.create({
           data: {
             privy_id: privyId,
@@ -27,14 +20,14 @@ class UserService {
             wallet_address: walletAddress
           }
         });
-        console.log(`Created new user:`, newUser);
+        console.log(`user.service.ts -> New account created for ${privyId}`);
       } else {
-        console.log('User already exists:', existingUser);
+        console.log(`user.service.ts -> User ${privyId} already exists in database`);
       }
       
       return true;
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error('user.service.ts -> Database error:', error);
       return false;
     }
   }
@@ -44,15 +37,14 @@ class UserService {
    */
   async storeEbayToken(privyId: string, refreshToken: string) {
     try {
-      console.log(`Storing eBay token for user with privy_id: ${privyId}`);
-      const updatedUser = await prisma.profiles.update({
+      await prisma.profiles.update({
         where: { privy_id: privyId },
         data: { ebay_refresh_token: refreshToken }
       });
-      console.log('Updated user with eBay token:', updatedUser);
+      console.log(`user.service.ts -> eBay token stored for user ${privyId}`);
       return true;
     } catch (error) {
-      console.error('Error storing eBay token:', error);
+      console.error('user.service.ts -> Failed to store eBay token:', error);
       return false;
     }
   }
@@ -62,19 +54,19 @@ class UserService {
    */
   async getEbayToken(privyId: string) {
     try {
-      console.log(`Getting eBay token for user with privy_id: ${privyId}`);
       const profile = await prisma.profiles.findUnique({
         where: { privy_id: privyId },
         select: { ebay_refresh_token: true }
       });
       
-      console.log('Found profile with token:', !!profile?.ebay_refresh_token);
+      const hasToken = !!profile?.ebay_refresh_token;
+      console.log(`user.service.ts -> eBay connection for ${privyId}: ${hasToken ? 'Connected' : 'Not connected'}`);
       return profile?.ebay_refresh_token || null;
     } catch (error) {
-      console.error('Error getting eBay token:', error);
+      console.error('user.service.ts -> Error checking eBay connection:', error);
       return null;
     }
   }
 }
 
-export const userService = new UserService(); 
+export const userService = new UserService();
