@@ -7,9 +7,9 @@ import { createHash } from "crypto";
 export const AccountDeletion = (req: Request, res: Response) => { 
 
   const VERIFICATION_TOKEN = process.env.EBAY_VERIFICATION_TOKEN || "default_token"; 
-  console.log("Received eBay request:", req.method, req.query, req.body);
-  console.log("Using VERIFICATION_TOKEN:", VERIFICATION_TOKEN);
-  console.log("Received Path:", req.path);
+  // console.log("Received eBay request:", req.method, req.query, req.body);
+  // console.log("Using VERIFICATION_TOKEN:", VERIFICATION_TOKEN);
+  // console.log("Received Path:", req.path);
 
   if (req.method === "GET") {
     if (!req.query.challenge_code) {
@@ -35,7 +35,8 @@ export const AccountDeletion = (req: Request, res: Response) => {
   }
 
   if (req.method === "POST") {
-    console.log("Received eBay account deletion POST:", req.body);
+    console.log("Received eBay account deletion POST:");
+    // console.log("Received eBay account deletion POST:", req.body);
     
     // ✅ You can process the deletion notification here
     res.status(200).json({ message: "Account deletion received" });
