@@ -34,17 +34,24 @@ class UserService {
 
   /**
    * Store eBay refresh token for a user
+   * Pass null to clear the token (disconnect)
    */
-  async storeEbayToken(privyId: string, refreshToken: string) {
+  async storeEbayToken(privyId: string, refreshToken: string | null) {
     try {
       await prisma.profiles.update({
         where: { privy_id: privyId },
         data: { ebay_refresh_token: refreshToken }
       });
-      console.log(`user.service.ts -> eBay token stored for user ${privyId}`);
+      
+      if (refreshToken) {
+        console.log(`user.service.ts -> eBay token stored for user ${privyId}`);
+      } else {
+        console.log(`user.service.ts -> eBay token removed for user ${privyId}`);
+      }
+      
       return true;
     } catch (error) {
-      console.error('user.service.ts -> Failed to store eBay token:', error);
+      console.error('user.service.ts -> Failed to update eBay token:', error);
       return false;
     }
   }

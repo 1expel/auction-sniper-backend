@@ -98,9 +98,10 @@ class EbayService {
 
   // Method to generate authorization URL for user consent
   public getAuthorizationUrl(state?: string) {
-    // Use minimal scopes that are more likely to be available to all developer accounts
+    // Request scopes that are available in the user's eBay developer account
     const scopes = [
       'https://api.ebay.com/oauth/api_scope', // Basic scope
+      'https://api.ebay.com/oauth/api_scope/commerce.identity.readonly' // For user profile info
     ].join(' ');
     
     // Pass optional parameters as an object
@@ -259,6 +260,52 @@ class EbayService {
       return response.data;
     } catch (error) {
       console.error('Error fetching user purchase history:', error);
+      throw error;
+    }
+  }
+
+  // Get user's eBay account information
+  public async getUserInfo(refreshToken: string) {
+    try {
+      const client = await this.getUserApiClient(refreshToken);
+      
+      // Using the account API to get user information
+      const response = await client.get('/commerce/identity/v1/user');
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching user information:', error);
+      throw error;
+    }
+  }
+
+  // Get user's eBay watch list
+  public async getUserWatchList(refreshToken: string) {
+    try {
+      const client = await this.getUserApiClient(refreshToken);
+      
+      // Using the watch list API 
+      const response = await client.get('/buy/my-ebay/v1/watch-list');
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching user watch list:', error);
+      throw error;
+    }
+  }
+
+  // Add an item to user's watch list
+  public async addToWatchList(refreshToken: string, itemId: string) {
+    try {
+      const client = await this.getUserApiClient(refreshToken);
+      
+      const response = await client.post('/buy/my-ebay/v1/watch-list', {
+        itemId
+      });
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error adding item to watch list:', error);
       throw error;
     }
   }

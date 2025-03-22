@@ -65,13 +65,16 @@ export const handleCallback = async (req: Request, res: Response): Promise<void>
         connected: true
       });
     } else {
-      // If no user in context, return the token for frontend storage
-      // This is only for development/testing
+      // If no user in context, still don't expose token
+      // We need to handle this case better - either:
+      // 1. Require authentication for this endpoint
+      // 2. Use a session or some other mechanism
+      console.warn('No authenticated user when processing eBay callback');
+      
       res.json({ 
-        success: true, 
-        message: 'Successfully authorized with eBay',
-        refresh_token, // In production, don't send this to the client
-        connected: true
+        success: false, 
+        message: 'Authorization failed - no authenticated user',
+        connected: false
       });
     }
   } catch (error) {
@@ -81,26 +84,19 @@ export const handleCallback = async (req: Request, res: Response): Promise<void>
 };
 
 /**
- * Example endpoint that uses user authorization
+ * Get user's purchase history
+ * 
+ * NOTE: This endpoint will not work with the current scopes.
+ * It requires a marketplace insights scope that is not in your available scopes.
  */
 export const getUserHistory = async (req: Request, res: Response): Promise<void> => {
   try {
-    let refreshToken: string | null = null;
-    
-    // First, try to get the token from the database if user is authenticated
-    if (req.user && req.user.privyUserId) {
-      refreshToken = await userService.getEbayToken(req.user.privyUserId);
+    if (!req.user || !req.user.privyUserId) {
+      res.status(401).json({ error: 'Authentication required' });
+      return;
     }
     
-    // If not available, try to get from request body (for development/testing)
-    if (!refreshToken) {
-      const { refresh_token } = req.body;
-      if (!refresh_token) {
-        res.status(400).json({ error: 'eBay connection not found' });
-        return;
-      }
-      refreshToken = refresh_token;
-    }
+    const refreshToken = await userService.getEbayToken(req.user.privyUserId);
     
     // Ensure we have a token before calling the service
     if (!refreshToken) {
@@ -108,10 +104,109 @@ export const getUserHistory = async (req: Request, res: Response): Promise<void>
       return;
     }
     
-    const history = await ebayService.getUserPurchaseHistory(refreshToken);
-    res.json(history);
+    // This will likely fail due to insufficient scopes
+    res.status(403).json({ 
+      error: 'Insufficient permissions', 
+      message: 'This endpoint requires additional eBay API scopes that are not currently available.'
+    });
   } catch (error) {
     console.error('Error fetching user history:', error);
     res.status(500).json({ error: 'Failed to fetch user history' });
+  }
+};
+
+/**
+ * Get user's eBay account information
+ * 
+ * This endpoint will work with the commerce.identity.readonly scope
+ */
+export const getUserInfo = async (req: Request, res: Response): Promise<void> => {
+  try {
+    if (!req.user || !req.user.privyUserId) {
+      res.status(401).json({ error: 'Authentication required' });
+      return;
+    }
+    
+    const refreshToken = await userService.getEbayToken(req.user.privyUserId);
+    
+    if (!refreshToken) {
+      res.status(400).json({ error: 'eBay connection not found' });
+      return;
+    }
+    
+    const userInfo = await ebayService.getUserInfo(refreshToken);
+    res.json(userInfo);
+  } catch (error) {
+    console.error('Error fetching user info:', error);
+    res.status(500).json({ error: 'Failed to fetch user information' });
+  }
+};
+
+/**
+ * Get user's eBay watch list
+ * 
+ * NOTE: This endpoint will not work with the current scopes.
+ * It requires the buy.my.ebay scope that is not in your available scopes.
+ */
+export const getUserWatchList = async (req: Request, res: Response): Promise<void> => {
+  try {
+    if (!req.user || !req.user.privyUserId) {
+      res.status(401).json({ error: 'Authentication required' });
+      return;
+    }
+    
+    const refreshToken = await userService.getEbayToken(req.user.privyUserId);
+    
+    if (!refreshToken) {
+      res.status(400).json({ error: 'eBay connection not found' });
+      return;
+    }
+    
+    // This will likely fail due to insufficient scopes
+    res.status(403).json({ 
+      error: 'Insufficient permissions', 
+      message: 'This endpoint requires additional eBay API scopes that are not currently available.'
+    });
+  } catch (error) {
+    console.error('Error fetching watch list:', error);
+    res.status(500).json({ error: 'Failed to fetch watch list' });
+  }
+};
+
+/**
+ * Add an item to user's watch list
+ * 
+ * NOTE: This endpoint will not work with the current scopes.
+ * It requires the buy.my.ebay scope that is not in your available scopes.
+ */
+export const addToWatchList = async (req: Request, res: Response): Promise<void> => {
+  try {
+    if (!req.user || !req.user.privyUserId) {
+      res.status(401).json({ error: 'Authentication required' });
+      return;
+    }
+    
+    const { itemId } = req.body;
+    
+    if (!itemId) {
+      res.status(400).json({ error: 'Item ID is required' });
+      return;
+    }
+    
+    const refreshToken = await userService.getEbayToken(req.user.privyUserId);
+    
+    if (!refreshToken) {
+      res.status(400).json({ error: 'eBay connection not found' });
+      return;
+    }
+    
+    // This will likely fail due to insufficient scopes
+    res.status(403).json({ 
+      error: 'Insufficient permissions', 
+      message: 'This endpoint requires additional eBay API scopes that are not currently available.'
+    });
+  } catch (error) {
+    console.error('Error adding to watch list:', error);
+    res.status(500).json({ error: 'Failed to add item to watch list' });
   }
 }; 
